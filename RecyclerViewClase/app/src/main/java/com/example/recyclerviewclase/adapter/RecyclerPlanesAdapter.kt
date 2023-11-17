@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerviewclase.R
 import com.example.recyclerviewclase.model.PlanAsturias
 
+/**
+ * Clase que recibe la lista con nuestras muestras.
+ */
 class RecyclerPlanesAdapter(private val dataset:List<PlanAsturias>) :
 
     RecyclerView.Adapter<RecyclerPlanesAdapter.PlanesViewHolder>(){
