@@ -11,8 +11,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recycler = findViewById<RecyclerView>(R.id.planesRecyclerView)
-        recycler.adapter = RecyclerPlanesAdapter(dataSource.listaPlanes)
+
+        findViewById<RecyclerView>(R.id.planesRecyclerView).adapter = RecyclerPlanesAdapter(dataSource.listaPlanes)
     }
 
 }
