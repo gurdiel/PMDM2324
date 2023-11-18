@@ -1,8 +1,8 @@
 package com.mpd.pmdm.mensajesrecyclerview.data
 
 import com.example.practica3.R
-import com.mpd.pmdm.mensajesrecyclerview.R
-import com.mpd.pmdm.mensajesrecyclerview.model.Message
+import com.example.practica3.model.Message
+
 
 class MessagesSource {
     companion object{

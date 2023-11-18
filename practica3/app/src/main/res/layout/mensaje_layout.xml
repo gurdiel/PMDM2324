@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="8dp">
 
@@ -13,53 +15,45 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/_CardView"
+        app:layout_constraintEnd_toStartOf="@id/_card"
         app:shapeAppearance="@style/circleImageView"
         tools:background="@color/black"
         />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/_CardView"
-        style="?attr/materialCardViewFilledStyle"
-        android:layout_width="wrap_content"
-        android:minHeight="80dp"
+        android:id="@+id/_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/_ShapeableIV"
         app:layout_constraintTop_toTopOf="parent"
-        tools:background="black">
-
+        style="?attr/materialCardViewFilledStyle">
         <LinearLayout
-            android:id="@+id/_Linear"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
+            android:layout_gravity="center"
+            >
             <TextView
                 android:id="@+id/_autor"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/_body"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="sssddddddddddddaaaaaadddddddddddd"/>
-
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                tools:text="TextView"
+                android:textAlignment="center"/>
             <TextView
-                android:id="@+id/_body"
-                android:layout_width="wrap_content"
+                android:id="@+id/_texto"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/_autor"
-                tools:text="saaaaaaaaaaaaaaaaaaaaaaaaaa"/>
-
+                android:textAppearance="?attr/textAppearanceBody1"
+                tools:text="TextView"
+                android:textAlignment="center"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
