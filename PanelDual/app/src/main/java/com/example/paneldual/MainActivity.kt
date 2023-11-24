@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             val fragmentContainer = binding.fragmentBotones
-            val Button = binding.
             val botonesFragment = BotonesFragment()
             supportFragmentManager
                 .beginTransaction() //empezar una transacción
