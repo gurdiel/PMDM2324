@@ -1,11 +1,16 @@
 package com.example.paneldual
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.fragment.app.FragmentContainerView
 import com.example.paneldual.databinding.ActivityMainBinding
 
+/**
+ * Declaramos nuestro propio Listener. Una interface para recibir las notificaciones
+ * al seleccionar cualquier boton
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -40,6 +45,5 @@ class MainActivity : AppCompatActivity() {
                     .commit()
             }
         }
-
     }
 }
