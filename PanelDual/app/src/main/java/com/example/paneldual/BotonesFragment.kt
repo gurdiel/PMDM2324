@@ -1,5 +1,6 @@
 package com.example.paneldual
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +18,20 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class BotonesFragment : Fragment() {
+
+    private lateinit var starSignListener: StarSignListener
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if(context is StarSignListener){
+            starSignListener = context
+        } else{
+            throw RuntimeException("Must implement StarSignListener")
+        }
+        //Valdría también lo siguiente
+//        if(activity is StarSignListener){
+//            starSignListener = activity as StarSignListener
+//        }
+    }
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
