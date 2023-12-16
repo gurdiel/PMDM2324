@@ -7,18 +7,7 @@ import android.widget.Button
 import androidx.fragment.app.FragmentContainerView
 import com.example.paneldual.databinding.ActivityMainBinding
 
-/**
- * Declaramos nuestro propio Listener. Una interface para recibir las notificaciones
- * al seleccionar cualquier boton
- */
-interface StarSignListener{
-    /**
-     * Cuando se selecciona un color en coloFragment
-     * se llama a la implementación de este método
-     */
-    fun onSelected(id: Int)
-}
-class MainActivity : AppCompatActivity(), StarSignListener {
+class MainActivity : AppCompatActivity(), BotonesListener {
 
     private lateinit var binding: ActivityMainBinding
     var isDualPanel: Boolean = false
@@ -27,9 +16,6 @@ class MainActivity : AppCompatActivity(), StarSignListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        //Si la actividad contiene el id del segundo contenedor de fragment,
-        //Es la tablet
 
         isDualPanel = binding.fragmentColores != null
 
@@ -52,11 +38,24 @@ class MainActivity : AppCompatActivity(), StarSignListener {
         }
     }
 
-    override fun onSelected(id: Int) {
-        if(isDualPanel) {
-            val coloresFragment = binding.fragmentColores as ColorFragment
-            //Pasamos el id, que nos viene desde el ListFragment, a la función de DetailFragment
-            coloresFragment.setColor(id)
+    override fun onClickButton(color: Int) {
+        //Recupero la posible isntancia de ColorFragment, si existe (en tableta) y lo casteo
+        // a ColorFragment para poder llamar a sus funciones específicas
+        //ya que findFragmentById me devuelve un Fragment genérico
+        //Como puedo estar lanzando esta función desde un móvil, la referencia podría ser nulla,
+        // así que el casting es a un ColorFragment nullable
+        val loadedColorFragment = supportFragmentManager.findFragmentById(R.id.fragmentColores) as ColorFragment?
+        loadedColorFragment?.cambiarColor(color)
+        //Si estamos en un móvil, no tableta, y no está cargado el fragmento. Lo cargamos ahora
+        //Podríamos haber usado el atributo isDualPanel. Pero esta es otra forma
+        if(loadedColorFragment == null){
+            val newColorFragment = ColorFragment.newInstance(color)
+            val fragmentContainer = binding.fragment
+            supportFragmentManager
+                .beginTransaction()
+                .replace(fragmentContainer!!.id, newColorFragment)
+                .addToBackStack(null)
+                .commit()
         }
     }
 }
